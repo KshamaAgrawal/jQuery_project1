@@ -48,7 +48,7 @@
                 <input type="text" class="form-control" id="head">
             </div>
             <div class="modal-footer">
-              <button type="button" id="btnforHeading" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-primary btnforHeading">Save</button>
             </div>
           </form>
         </div> 
@@ -68,14 +68,14 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <select class="SltDrp">
+              <select class="form-control SltDrp">
                 <option value="">--select Heading--</option>
-              </select><br><br>
+              </select><br>
                 <label for="Subhead" class="col-form-label">Subheading:</label>
-                  <input type="text" class="form-control" id="Subhead">
+                  <input type="text" class="form-control Subhead">
             </div>
             <div class="modal-footer">  
-              <button type="button" id="btnforSubheading" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-primary btnforSubheading">Save</button>
             </div>
           </form>
         </div>
@@ -94,26 +94,33 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <select class="SltDrp">
+              <select class="form-control SltDrp">
                 <option value="select">--select Heading--</option>
               </select><br><br>
-              <select class="ForADD">
+              <select class="form-control ForADD">
                 <option value="select">--select SubHeading--</option>
               </select><br><br>
-              <select>
-                <option value="select">--Input Type--</option>
-                <option value="label">label</option>
-                <option value="text">text</option>
-                <option value="button">button</option>
-                <option value="checkbox">checkbox</option>
-                <option value="radio">radio</option>
-                <option value="textarea">textarea</option>
-                <option value="date">date</option>
-                <option value="number">number</option>
-              </select>
+              <select class="form-control">
+                <option value="select">--Select Input Type--</option>
+                <option value="label">Select</option>
+                <option value="text">Text</option>
+                <option value="button">Button</option>
+                <option value="checkbox">Checkbox</option>
+                <option value="radio">Radio</option>
+                <option value="textarea">Textarea</option>
+                <option value="date">Date</option>
+                <option value="number">Number</option>
+                <option value="email">Email</option>
+              </select><br><br>
+              <input type="text" class="form-control" placeholder="label ..."><br>
+              <input type="text" class="form-control" placeholder="name ..."><br>
+              <input type="text" class="form-control" placeholder="placeholder ..."><br>
+              <input type="text" class="form-control" placeholder="class ..."><br>
+              <input type="text" class="form-control" placeholder="value ..."><br>
+              <textarea class="form-control" rows="5" placeholder="options"></textarea>
             </div>
             <div class="modal-footer">  
-              <button type="button" id="btnforaddForm" class="btn btn-primary">Save</button>
+              <button type="button" id="btn btn-primary btnforaddForm" class="btn btn-primary">Save</button>
             </div>
           </form>
         </div>
