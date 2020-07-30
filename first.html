@@ -11,14 +11,6 @@
 <title>Hello, world!</title>
 
   <style>
-    .btn btn-primary
-    {
-      display: inline-block;
-    }
-    #Subhead h3
-    {
-      margin-right: 25px;
-    }
     section h2
     {
       margin-left: 60px;
@@ -42,7 +34,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form class="Formhead">
             <div class="form-group">
               <label for="head" class="col-form-label">heading:</label>
                 <input type="text" class="form-control" id="head">
@@ -66,7 +58,7 @@
             </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form class="FormSubHead">
             <div class="form-group">
               <select class="form-control SltDrp">
                 <option value="">--select Heading--</option>
@@ -92,7 +84,7 @@
           </button>
         </div>       
         <div class="modal-body">
-          <form>
+          <form class="FormAddform">
             <div class="form-group">
               <select class="form-control head_in_form">
                 <option value="select">--select Heading--</option>
@@ -117,7 +109,8 @@
               <input type="text" class="form-control plc_input" placeholder="placeholder ..."><br>
               <input type="text" class="form-control cls_input" placeholder="class ..."><br>
               <input type="text" class="form-control val_input" placeholder="value ..."><br>
-              <textarea rows="5" class="form-control opn_input" placeholder="options"></textarea>
+              <textarea rows="4" class="form-control opn_input" placeholder="options"></textarea>
+              
             </div>
             <div class="modal-footer">  
               <button type="button" id="btn btn-primary" class="btn btn-primary btnforaddForm">Save</button>
