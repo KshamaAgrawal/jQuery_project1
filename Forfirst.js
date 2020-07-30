@@ -39,8 +39,8 @@ $(document).ready(function()
   });
 
   $('.btnforaddForm').on("click",function(event){
-    // event.preventDefault()                                    // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
-    var gethead     = $(".head_in_form").val();               //getting heading value in add_form 
+    // event.preventDefault()                                 // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
+    var gethead     = $(".head_in_form").val();               // getting heading value in add_form 
     var getsubhead  = parseInt($(".ForADD").val());           // getting subheading value in add_form
     var input_type  = $(".form_input").val();                 // getting input type value in add_form
     var getlabel    = $(".lvl_input").val();                  // getting level value in add_form
