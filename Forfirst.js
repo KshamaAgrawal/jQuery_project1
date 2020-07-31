@@ -5,10 +5,10 @@ $(document).ready(function()
     var ForHEADING = $("#exampleModal").find('input').val();
     $('main').append('<section><h1>'+ForHEADING+'<button class="crossbtn" onclick="myfunction(this)">X</button></h1></section>');         // showing heading on screen
 
-    $(".SltDrp option").remove();                                           // removing select option(select heading)
+    $(".SltDrp option").remove();                                           // removing select option from subheading dropdown (select heading)
     $(".SltDrp").append("<option>select Heading</option>");   
 
-    $(".head_in_form option").remove();                                     // removing select option(select heading)
+    $(".head_in_form option").remove();                                     // removing select option from add_form dropdown (select heading)
     $(".head_in_form").append("<option>select Heading</option>");   
 
     $("main section h1").each(function(key){                                   // loop on heading 
@@ -51,8 +51,17 @@ $(document).ready(function()
     var getoptns    = $(".opn_input").val();                  // getting option value in add_form
     getsubhead=getsubhead+1
     
-    $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
+  //$('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
+    if(input_type == 'textarea')
+      {
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea>');
+      }
+    else
+    {  
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
+    }
   })
+  
 });
 
 function myfunction(thiss){
