@@ -57,9 +57,17 @@ $(document).ready(function()
     }
     else if(input_type == 'checkbox')
     {
-      var trainindIdArray = getoptns.split(',');
+      var forchkbox = getoptns.split(',');
       
-      $(trainindIdArray).each(function(key, value){
+      $(forchkbox).each(function(key, value){
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+value+'</label><input type="'+input_type+'" name="'+value+'"  value = "'+value+'">');
+      })
+    }
+    else if(input_type == 'radio')
+    {
+      var forrdbtn = getoptns.split(',');
+
+      $(forrdbtn).each(function(key,value){
         $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+value+'</label><input type="'+input_type+'" name="'+value+'"  value = "'+value+'">');
       })
     }
@@ -68,7 +76,7 @@ $(document).ready(function()
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
     }
   }) 
-   
+
 });
 
 function myfunction(thiss){
