@@ -66,9 +66,10 @@ $(document).ready(function()
     else if(input_type == 'radio')
     {
       var forrdbtn = getoptns.split(',');
+      console.log(forrdbtn);
 
-      $(forrdbtn).each(function(key,value){
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+value+'</label><input type="'+input_type+'" name="'+value+'"  value = "'+value+'">');
+      $(forrdbtn).each(function(key){
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" value = "'+getvalue+'">');
       })
     }
     else
