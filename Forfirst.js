@@ -60,7 +60,7 @@ $(document).ready(function()
       var forchkbox = getoptns.split(',');
       
       $(forchkbox).each(function(key, value){
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+value+'</label><input type="'+input_type+'" name="'+value+'"  value = "'+value+'">');
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+value+'</label><input type="'+input_type+'" name="'+value+'" class="'+value+'" value = "'+value+'">');
       })
     }
     else if(input_type == 'radio')
@@ -68,19 +68,23 @@ $(document).ready(function()
       var forrdbtn = getoptns.split(',');
      
       $(forrdbtn).each(function(key){
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" value = "'+getvalue+'">');
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" class="'+getclass+'" value = "'+getvalue+'">');
       })
     }
     else if(input_type == 'select')
     {
       var forselt = getoptns.split(',');
-      console.log(forselt);
+      
       var forSelect = $('<select><option>select</option></select>');
-      console.log(forSelect);
+      
       for(var i = 0; i < forselt.length; i++){
         var forSelect = $(forSelect).append('<option value="'+forselt[i]+'">'+forselt[i]+'</option>');
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append(forSelect);
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append(forSelect);
       }
+    }
+    else if(input_type == 'button')
+    {
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
     }
     else
     {  
