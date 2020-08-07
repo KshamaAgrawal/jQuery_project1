@@ -15,7 +15,7 @@ $(document).ready(function()
       var Headtxt = $(this).text().replace('X','');                            // finding heading text and also replace cross sign in space 
       key= key+1;
       $(".SltDrp").append('<option value="'+key+'">'+Headtxt+'</option>');        //appending heading text to subheading select heading dropdown
-     $(".head_in_form").append('<option value="'+key+'">'+Headtxt+'</option>');   // appending heading text to addform selct haeding dropdown
+      $(".head_in_form").append('<option value="'+key+'">'+Headtxt+'</option>');   // appending heading text to addform selct haeding dropdown
     });
   });
 
@@ -50,18 +50,25 @@ $(document).ready(function()
     var getvalue    = $(".val_input").val();                  // getting value of value in add_form
     var getoptns    = $(".opn_input").val();                  // getting option value in add_form
     getsubhead=getsubhead+1
-    
-  //$('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
-    if(input_type == 'textarea')
-      {
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea>');
-      }
+  
+    if(input_type == 'textarea')                                   // condition for textarea if we select textarea in input type dropdown then it will show textarea
+    {
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea>');   //and it will show textarea if condition is true 
+    }
+    else if(input_type == 'checkbox')
+    {
+      var trainindIdArray = getoptns.split(',');
+      
+      $(trainindIdArray).each(function(key, value){
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+value+'</label><input type="'+input_type+'" name="'+value+'"  value = "'+value+'">');
+      })
+    }
     else
     {  
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
     }
-  })
-  
+  }) 
+   
 });
 
 function myfunction(thiss){
