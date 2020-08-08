@@ -76,6 +76,7 @@ $(document).ready(function()
       var forselt = getoptns.split(',');
       
       var forSelect = $('<select><option>select</option></select>');
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label>');
       
       for(var i = 0; i < forselt.length; i++){
         var forSelect = $(forSelect).append('<option value="'+forselt[i]+'">'+forselt[i]+'</option>');
