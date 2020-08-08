@@ -53,14 +53,14 @@ $(document).ready(function()
   
     if(input_type == 'textarea')                                   // condition for textarea if we select textarea in input type dropdown then it will show textarea
     {
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');   //and it will show textarea if condition is true 
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p class="itsInput"><label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');   //and it will show textarea if condition is true and also removing the textarea with cross btn 
     }
     else if(input_type == 'checkbox')
     {
       var forchkbox = getoptns.split(',');
       
       $(forchkbox).each(function(key, value){
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+value+'</label><input type="'+input_type+'" name="'+value+'" class="'+value+'" value = "'+value+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p class="itsInput"><label>'+value+'</label><input type="'+input_type+'" name="'+value+'" class="'+value+'" value = "'+value+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show checkbox if condition is true and also removing the checkbox with cross btn 
       })
     }
     else if(input_type == 'radio')
@@ -68,7 +68,7 @@ $(document).ready(function()
       var forrdbtn = getoptns.split(',');
      
       $(forrdbtn).each(function(key){
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" class="'+getclass+'" value = "'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p class="itsInput"><label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" class="'+getclass+'" value = "'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show radio if condition is true and also removing the radio with cross btn 
       })
     }
     else if(input_type == 'select')
@@ -85,11 +85,11 @@ $(document).ready(function()
     }
     else if(input_type == 'button')
     {
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p class="itsInput"><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show button if condition is true and also removing the button with cross btn 
     }
     else
     {  
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p class="itsInput"><label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show text,number,date,email if condition is true and also removing the text,number,date,email with cross btn 
     }
   }) 
 
@@ -99,5 +99,5 @@ function myfunction(thiss){
   $(thiss).parent().parent().remove();                          // it will remove heading and subheading from browser
 }
 function fntionForInput(thiss){
-  $(thiss).parent().remove();
+  $(thiss).parent().remove();                                  // it will remove all input type from browser
 }
