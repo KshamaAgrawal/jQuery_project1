@@ -53,7 +53,7 @@ $(document).ready(function()
   
     if(input_type == 'textarea')                                   // condition for textarea if we select textarea in input type dropdown then it will show textarea
     {
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea>');   //and it will show textarea if condition is true 
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');   //and it will show textarea if condition is true 
     }
     else if(input_type == 'checkbox')
     {
@@ -97,4 +97,7 @@ $(document).ready(function()
 
 function myfunction(thiss){
   $(thiss).parent().parent().remove();                          // it will remove heading and subheading from browser
+}
+function fntionForInput(thiss){
+  $(thiss).parent().remove();
 }
