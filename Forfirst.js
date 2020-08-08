@@ -60,7 +60,7 @@ $(document).ready(function()
       var forchkbox = getoptns.split(',');
       
       $(forchkbox).each(function(key, value){
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+value+'</label><input type="'+input_type+'" name="'+value+'" class="'+value+'" value = "'+value+'">');
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+value+'</label><input type="'+input_type+'" name="'+value+'" class="'+value+'" value = "'+value+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
       })
     }
     else if(input_type == 'radio')
