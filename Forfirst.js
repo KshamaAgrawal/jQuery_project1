@@ -68,7 +68,7 @@ $(document).ready(function()
       var forrdbtn = getoptns.split(',');
      
       $(forrdbtn).each(function(key){
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" class="'+getclass+'" value = "'+getvalue+'">');
+        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" class="'+getclass+'" value = "'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
       })
     }
     else if(input_type == 'select')
