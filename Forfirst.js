@@ -92,6 +92,28 @@ $(document).ready(function()
     {  
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p class="itsInput"><label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show text,number,date,email if condition is true and also removing the text,number,date,email with cross btn 
     }
+
+    if($(".disable").is(":checked"))
+    {
+      var fordisable = input_type;
+      
+      if(input_type == 'text' || input_type== 'button' || input_type == 'checkbox' || input_type == 'radio' || input_type == 'date' || input_type == 'number' || input_type == 'email')
+      {
+        fordisable = 'input';             
+      }
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+') p:last-child '+fordisable).attr('disabled','disabled');
+    }
+    
+    if($(".readonly").is(":checked"))
+    {
+      var forrdonly = input_type;
+      
+      if(input_type == 'text' || input_type== 'button' || input_type == 'checkbox' || input_type == 'radio' || input_type == 'date' || input_type == 'number' || input_type == 'email')
+      {
+        forrdonly = 'input'; 
+      }
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+') p:last-child '+forrdonly).attr('readonly', true);
+    }
   }); 
 
 });
