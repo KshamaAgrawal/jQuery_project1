@@ -89,7 +89,7 @@ $(document).ready(function()
     }
     else
     {  
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
     }
   }) 
 
