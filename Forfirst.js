@@ -103,7 +103,7 @@ $(document).ready(function()
       }
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+') p:last-child '+fordisable).attr('disabled','disabled');
     }
-    
+
     if($(".readonly").is(":checked"))
     {
       var forrdonly = input_type;
@@ -113,6 +113,17 @@ $(document).ready(function()
         forrdonly = 'input'; 
       }
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+') p:last-child '+forrdonly).attr('readonly', true);
+    }
+
+    if($(".required").is(":checked"))
+    {
+      var forrequired = input_type;
+      
+      if(input_type == 'text' || input_type== 'button' || input_type == 'checkbox' || input_type == 'radio' || input_type == 'date' || input_type == 'number' || input_type == 'email')
+      {
+        forrequired = 'input'; 
+      }
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+') p:last-child '+forrequired).attr('required', true);
     }
   }); 
 
