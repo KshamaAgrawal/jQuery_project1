@@ -85,7 +85,7 @@ $(document).ready(function()
     }
     else if(input_type == 'button')
     {
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'">');
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');
     }
     else
     {  
