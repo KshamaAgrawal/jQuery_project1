@@ -25,6 +25,7 @@ $(document).ready(function()
     var Sh_Opt_Val = $(".SltDrp").val();                                         // finding select value like 1,2,3,4...
     $('main section:nth-child('+Sh_Opt_Val+')').append('<article><h2>'+subheadValue+'<button onclick="myfunction(this)">X</button></h2></article>');  // appending subhead accord to head
   });
+
   $(".head_in_form").change(function(){
     var forform = $(this).val();                                     // storing heading option value in forform variable
       
@@ -74,14 +75,14 @@ $(document).ready(function()
     else if(input_type == 'select')
     {
       var forselt = getoptns.split(',');
-      
-      var forSelect = $('<select><option>select</option></select>');
-      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<label>'+getlabel+'</label>');
-      
+      var itsForP = $('<p><label>'+getlabel+'</label></p>');
+      var forSelect = $('<select><option>select</option>').appendTo(itsForP);
+     
       for(var i = 0; i < forselt.length; i++){
-        var forSelect = $(forSelect).append('<option value="'+forselt[i]+'">'+forselt[i]+'</option>');
-        $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append(forSelect);
+        $('<option value="'+forselt[i]+'">'+forselt[i]+'</option>').appendTo(forSelect);
       }
+      $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append(itsForP);
+      $('<button class="crossbtn" onclick="fntionForInput(this)">X</button>').appendTo(itsForP);
     }
     else if(input_type == 'button')
     {
@@ -91,7 +92,7 @@ $(document).ready(function()
     {  
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p class="itsInput"><label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show text,number,date,email if condition is true and also removing the text,number,date,email with cross btn 
     }
-  }) 
+  }); 
 
 });
 
