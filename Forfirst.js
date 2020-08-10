@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+  var formArray = [];
+  
   $('.Formhead').submit(function(event){
     event.preventDefault()                                                // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
     var ForHEADING = $("#exampleModal").find('input').val();
@@ -17,6 +19,11 @@ $(document).ready(function()
       $(".SltDrp").append('<option value="'+key+'">'+Headtxt+'</option>');        //appending heading text to subheading select heading dropdown
       $(".head_in_form").append('<option value="'+key+'">'+Headtxt+'</option>');   // appending heading text to addform selct haeding dropdown
     });
+    formArray.push({ 'key':ForHEADING,'subheading':[] });
+    console.log(formArray);
+
+    localStorage.setItem('ForHEADING', JSON.stringify(formArray))
+
     $(".Formhead").trigger('reset');                                               // it will remove heading from input type heading after saving heading
   });
 
@@ -25,6 +32,11 @@ $(document).ready(function()
     var subheadValue = $(".Subhead").val();                                      // finding subheading input value
     var Sh_Opt_Val = $(".SltDrp").val();                                         // finding select value like 1,2,3,4...
     $('main section:nth-child('+Sh_Opt_Val+')').append('<article><h2>'+subheadValue+'<button onclick="myfunction(this)">X</button></h2></article>');  // appending subhead accord to head
+    
+    formArray[Sh_Opt_Val-1].subheading.push({ 'title' :subheadValue });
+    console.log(formArray);
+
+    localStorage.setItem('subheadValue', JSON.stringify(formArray))
   });
 
   $(".head_in_form").change(function(){
