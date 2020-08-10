@@ -17,6 +17,7 @@ $(document).ready(function()
       $(".SltDrp").append('<option value="'+key+'">'+Headtxt+'</option>');        //appending heading text to subheading select heading dropdown
       $(".head_in_form").append('<option value="'+key+'">'+Headtxt+'</option>');   // appending heading text to addform selct haeding dropdown
     });
+    $(".Formhead").trigger('reset');                                               // it will remove heading from input type heading after saving heading
   });
 
   $('.FormSubHead').submit(function(event){
@@ -126,7 +127,6 @@ $(document).ready(function()
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+') p:last-child '+forrequired).attr('required', true);
     }
   }); 
-
 });
 
 function myfunction(thiss){
