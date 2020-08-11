@@ -1,6 +1,9 @@
 $(document).ready(function()
 {
   var formArray = [];
+
+  var data = JSON.parse(localStorage.getItem('ForHEADING'))
+  console.log(data);
   
   $('.Formhead').submit(function(event){
     event.preventDefault()                                                // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
@@ -22,10 +25,11 @@ $(document).ready(function()
     formArray.push({ 'key':ForHEADING,'subheading':[] });
     console.log(formArray);
 
-    localStorage.setItem('ForHEADING', JSON.stringify(formArray))
+    localStorage.setItem('ForHEADING', JSON.stringify(formArray))                  // set heading to localstorage
 
     $(".Formhead").trigger('reset');                                               // it will remove heading from input type heading after saving heading
   });
+
 
   $('.FormSubHead').submit(function(event){
     event.preventDefault()                                                       // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
@@ -51,6 +55,7 @@ $(document).ready(function()
       $(".ForADD").append('<option value="'+key+'">'+foraddForm+'</option>');     // appending subheading text in addform button subheading dropdown
     }); 
   });
+
 
   $('.btnforaddForm').on("click",function(event){
     // event.preventDefault()                                 // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
