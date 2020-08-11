@@ -33,10 +33,10 @@ $(document).ready(function()
     var Sh_Opt_Val = $(".SltDrp").val();                                         // finding select value like 1,2,3,4...
     $('main section:nth-child('+Sh_Opt_Val+')').append('<article><h2>'+subheadValue+'<button onclick="myfunction(this)">X</button></h2></article>');  // appending subhead accord to head
     
-    formArray[Sh_Opt_Val-1].subheading.push({ 'title' :subheadValue });
+    formArray[Sh_Opt_Val-1].subheading.push({ 'title' :subheadValue, 'form' :[] });
     console.log(formArray);
 
-    localStorage.setItem('subheadValue', JSON.stringify(formArray))
+    localStorage.setItem('ForHEADING', JSON.stringify(formArray))
   });
 
   $(".head_in_form").change(function(){
@@ -68,7 +68,11 @@ $(document).ready(function()
     if(input_type == 'textarea')                                   // condition for textarea if we select textarea in input type dropdown then it will show textarea
     {
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');   //and it will show textarea if condition is true and also removing the textarea with cross btn 
+      
+      formArray[gethead-1].subheading[getsubhead-2].form.push({ 'input' : 'textarea', 'label' : getlabel, 'name' : getname, 'placeholder' : getplc_hldr, 'class' : getclass, 'value' : getvalue});
+      console.log(formArray);
     }
+
     else if(input_type == 'checkbox')
     {
       var forchkbox = getoptns.split(',');
@@ -76,6 +80,8 @@ $(document).ready(function()
       $(forchkbox).each(function(key, value){
         $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+value+'</label><input type="'+input_type+'" name="'+value+'" class="'+value+'" value = "'+value+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show checkbox if condition is true and also removing the checkbox with cross btn 
       })
+      formArray[gethead-1].subheading[getsubhead-2].form.push({ 'input' : 'checkbox', 'label' : getlabel, 'name' : getname, 'placeholder' : getplc_hldr, 'class' : getclass, 'value' : getvalue, 'option' : forchkbox});
+      console.log(formArray);
     }
     else if(input_type == 'radio')
     {
@@ -84,11 +90,13 @@ $(document).ready(function()
       $(forrdbtn).each(function(key){
         $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" class="'+getclass+'" value = "'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show radio if condition is true and also removing the radio with cross btn 
       })
+      formArray[gethead-1].subheading[getsubhead-2].form.push({ 'input' : 'radio', 'label' : getlabel, 'name' : getname, 'placeholder' : getplc_hldr, 'class' : getclass, 'value' : getvalue, 'option' : forrdbtn});
+      console.log(formArray);
     }
     else if(input_type == 'select')
     {
       var forselt = getoptns.split(',');
-      console.log(forselt);
+      // console.log(forselt);
       var itsForP = $('<p><label>'+getlabel+'</label></p>');
       
       var forSelect = $('<select><option>select</option>').appendTo(itsForP);
@@ -102,14 +110,23 @@ $(document).ready(function()
       }
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append(itsForP);
       $('<button class="crossbtn" onclick="fntionForInput(this)">X</button>').appendTo(itsForP);
+
+      formArray[gethead-1].subheading[getsubhead-2].form.push({ 'input' : 'select', 'label' : getlabel, 'name' : getname, 'placeholder' : getplc_hldr, 'class' : getclass, 'value' : getvalue, 'option' : forselt});
+      console.log(formArray);
     }
     else if(input_type == 'button')
     {
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show button if condition is true and also removing the button with cross btn 
+    
+      formArray[gethead-1].subheading[getsubhead-2].form.push({ 'input' : 'button', 'name' : getname, 'placeholder' : getplc_hldr, 'class' : getclass, 'value' : getvalue,});
+      console.log(formArray);
     }
     else
     {  
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+getlabel+'</label><input type="'+input_type+'" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show text,number,date,email if condition is true and also removing the text,number,date,email with cross btn 
+       
+      formArray[gethead-1].subheading[getsubhead-2].form.push({ 'input' : input_type, 'label' : getlabel, 'name' : getname, 'placeholder' : getplc_hldr, 'class' : getclass, 'value' : getvalue,});
+      console.log(formArray); 
     }
 
     if($(".disable").is(":checked"))
@@ -144,7 +161,13 @@ $(document).ready(function()
       }
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+') p:last-child '+forrequired).attr('required', true);
     }
-    $(".FormAddform").trigger('reset');                              // it will remove all form data from add_form after saving the data
+
+    // formArray[gethead-1].subheading[getsubhead-2].form.push({ 'input' : input_type, 'label' : getlabel, 'name' : getname, 'placeholder' : getplc_hldr, 'class' : getclass, 'value' : getvalue});
+    // console.log(formArray);
+
+    localStorage.setItem('ForHEADING', JSON.stringify(formArray))
+
+    // $(".FormAddform").trigger('reset');                              // it will remove all form data from add_form after saving the data
   }); 
 });
 
