@@ -14,7 +14,7 @@ $(document).ready(function()
       console.log(shkey);
       console.log(shvalue);
       $('main section:nth-child('+(hkey+1)+')').append('<article><h2>'+shvalue.title+'</h2></article>');
-      // shkey = shkey+2;
+    
       $(shvalue.form).each(function(intkey,formvalue){
         console.log(intkey);
         console.log(formvalue);
@@ -36,18 +36,20 @@ $(document).ready(function()
             $('main section:nth-child('+(hkey+1)+') article:nth-child('+(shkey+2)+')').append('<p><label>'+rdnvalue+'</label><input type= "'+formvalue.input+'"  name="'+formvalue.name+'" placeholder="'+formvalue.placeholder+'" class="'+formvalue.class+'" value="'+formvalue.value+'" option="'+formvalue.option+'" </p>');
           })
         }
-        // else if(formvalue.input == 'select'){
-        //   $(formvalue.option).each(function(sltkey,sltvalue){
-        //     console.log(sltkey);
-        //     console.log(sltvalue);
-        //     $('main section:nth-child('+(hkey+1)+') article:nth-child('+(shkey+2)+')').append('<p><label>'+formvalue.label+'</label><select>  <option="'+formvalue.option+'" ></option></select></p>');
-        //   })
-        // }
+        else if(formvalue.input == 'select'){
+          var forselt = formvalue.option;
+          var itsForP = $('<p><label>'+formvalue.label+'</label></p>');
+      
+          var forSelect = $('<select><option>select</option>').appendTo(itsForP);
+     
+          for(var i = 0; i < forselt.length; i++){
+            $('<option value="'+forselt[i]+'">'+forselt[i]+'</option>').appendTo(forSelect);
+          }
+          $('main section:nth-child('+(hkey+1)+') article:nth-child('+(shkey+2)+')').append(itsForP);
+        }
         else{
           $('main section:nth-child('+(hkey+1)+') article:nth-child('+(shkey+2)+')').append('<p><label>'+formvalue.label+'</label><input type= "'+formvalue.input+'"  name="'+formvalue.name+'" placeholder="'+formvalue.placeholder+'" class="'+formvalue.class+'" value="'+formvalue.value+'" option="'+formvalue.option+'" </p>');
         }
-        
-        
       })  
     })
   })
@@ -89,6 +91,8 @@ $(document).ready(function()
     console.log(formArray);
 
     localStorage.setItem('formArray', JSON.stringify(formArray))                       // storing subheading to localstorage
+  
+    // $(".FormSubHead").trigger('reset');
   });
 
   $(".head_in_form").change(function(){
@@ -117,7 +121,7 @@ $(document).ready(function()
     var getvalue    = $(".val_input").val();                  // getting value of value in add_form
     var getoptns    = $(".opn_input").val();                  // getting option value in add_form
     getsubhead=getsubhead+1
-  
+    console.log(getoptns);
     if(input_type == 'textarea')                                   // condition for textarea if we select textarea in input type dropdown then it will show textarea
     {
       $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+getlabel+'</label><textarea rows="5" cols="30" name="'+getname+'" placeholder="'+getplc_hldr+'" class="'+getclass+'" value="'+getvalue+'"></textarea><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>');   //and it will show textarea if condition is true and also removing the textarea with cross btn 
@@ -139,7 +143,7 @@ $(document).ready(function()
     else if(input_type == 'radio')
     {
       var forrdbtn = getoptns.split(',');
-     
+
       $(forrdbtn).each(function(key){
         $('main section:nth-child('+gethead+') article:nth-child('+getsubhead+')').append('<p><label>'+forrdbtn[key]+'</label><input type="'+input_type+'" name="'+getname+'" class="'+getclass+'" value = "'+getvalue+'"><button class="crossbtn" onclick="fntionForInput(this)">X</button></p>'); //and it will show radio if condition is true and also removing the radio with cross btn 
       })
@@ -149,7 +153,7 @@ $(document).ready(function()
     else if(input_type == 'select')
     {
       var forselt = getoptns.split(',');
-      // console.log(forselt);
+      console.log(forselt);
       var itsForP = $('<p><label>'+getlabel+'</label></p>');
       
       var forSelect = $('<select><option>select</option>').appendTo(itsForP);
@@ -217,7 +221,7 @@ $(document).ready(function()
  
     localStorage.setItem('formArray', JSON.stringify(formArray))
 
-    // $(".FormAddform").trigger('reset');                              // it will remove all form data from add_form after saving the data
+    $(".FormAddform").trigger('reset');                              // it will remove all form data from add_form after saving the data
   }); 
 });
 
