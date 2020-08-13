@@ -92,7 +92,7 @@ $(document).ready(function()
 
     localStorage.setItem('formArray', JSON.stringify(formArray))                       // storing subheading to localstorage
   
-    // $(".FormSubHead").trigger('reset');
+    $(".FormSubHead").trigger('reset');
   });
 
   $(".head_in_form").change(function(){
