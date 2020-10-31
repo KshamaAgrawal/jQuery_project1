@@ -1,12 +1,13 @@
 $(document).ready(function() {
   var formArray = [];
-
   var data = JSON.parse(localStorage.getItem('formArray'));
 
   $(data).each(function(hkey,datavalue){
     $('main').append('<section><h1>'+datavalue.title+'</h1></section>');
+
     $(datavalue.subheading).each(function(shkey,shvalue){
       $('main section:nth-child('+(hkey+1)+')').append('<article><h2>'+shvalue.title+'</h2></article>');
+     
       $(shvalue.form).each(function(intkey,formvalue){
         if(formvalue.input == 'textarea'){
           $('main section:nth-child('+(hkey+1)+') article:nth-child('+(shkey+2)+')').append('<p><label>'+formvalue.label+'</label><textarea rows="5" cols="30" name="'+formvalue.name+'" placeholder="'+formvalue.placeholder+'" class="'+formvalue.class+'" value="'+formvalue.value+'"</p>')
@@ -34,9 +35,10 @@ $(document).ready(function() {
         else{
           $('main section:nth-child('+(hkey+1)+') article:nth-child('+(shkey+2)+')').append('<p><label>'+formvalue.label+'</label><input type= "'+formvalue.input+'"  name="'+formvalue.name+'" placeholder="'+formvalue.placeholder+'" class="'+formvalue.class+'" value="'+formvalue.value+'" option="'+formvalue.option+'" </p>');
         }
-      })  
-    })
-  })
+      });  
+    });
+  });
+  
   $('.Formhead').submit(function(event){
     event.preventDefault()                                                // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
     var ForHEADING = $("#exampleModal").find('input').val();
@@ -60,6 +62,7 @@ $(document).ready(function() {
 
     $(".Formhead").trigger('reset');                                               // it will remove heading from input type heading after saving heading
   });
+
   $('.FormSubHead').submit(function(event){
     event.preventDefault()                                                       // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
     var subheadValue = $(".Subhead").val();                                      // finding subheading input value
@@ -83,6 +86,7 @@ $(document).ready(function() {
       $(".ForADD").append('<option value="'+key+'">'+foraddForm+'</option>');     // appending subheading text in addform button subheading dropdown
     }); 
   });
+
   $('.FormSubHead').submit(function(event){                                                                                                                                                             
     event.preventDefault()                                 // it will hold data if you press enter kry data will show you and if you don't put this then data will disable when you press enter key
     var gethead     = $(".head_in_form").val();               // getting heading value in add_form 
